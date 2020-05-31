@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Date Created 4/13/2015
+#
+# This script is designed to move a large about of data between storage hosts. It this case one server was a SUN Server and the other
+# was a DELL Storage Unit with a NFS mount point. This little thingy has been tweaked here and there so please test and tweak to your hearts desire. 
+
+SRC_SVR=<ServerName>
+#
+SRC_DIR=/dir1/dir2/
+#
+TGT_DIR=/path1/path2/
+#
+LOG_OUT=/var/tmp/rsync.log.$$
+#
+OPTS="-avxH --stats"
+
+nohup rsync $OPTS ${SRC_SRV}:$SRC_DIR $TGT_DIR>$LOG_OUT 2>&1 &
